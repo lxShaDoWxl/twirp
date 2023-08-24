@@ -150,8 +150,7 @@ final class {{ .Service | phpServiceName .File }}Server implements RequestHandle
             $i = strlen($header);
         }
 
-        $respHeaders = [];
-        $ctx[Context::RESPONSE_HEADER] = &$respHeaders;
+        $ctx[Context::RESPONSE_HEADER] = [];
 
         switch (trim(strtolower(substr($header, 0, $i)))) {
             case 'application/json':
@@ -168,7 +167,7 @@ final class {{ .Service | phpServiceName .File }}Server implements RequestHandle
                 return $this->writeError($ctx, $this->badRouteError($msg, $req->getMethod(), $req->getUri()->getPath()));
         }
 
-        foreach ($respHeaders as $key => $value) {
+        foreach ($ctx[Context::RESPONSE_HEADER] as $key => $value) {
             $resp = $resp->withHeader($key, $value);
         }
 
