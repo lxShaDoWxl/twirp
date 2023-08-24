@@ -342,7 +342,7 @@ End of functions from https://github.com/client9/shlib
 EOF
 
 PROJECT_NAME="twirp"
-OWNER=twirphp
+OWNER=lxShaDoWxl
 REPO="twirp"
 BINARY=protoc-gen-twirp_php
 FORMAT=tar.gz
